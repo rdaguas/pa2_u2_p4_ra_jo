@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.banco.repository.modelo.CuentaBancaria;
+import com.example.demo.banco.service.CuentaService;
 import com.example.demo.repository.modelo.Estudiante;
 import com.example.demo.service.EstudianteService;
 
@@ -15,7 +17,7 @@ import com.example.demo.service.EstudianteService;
 public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 	
 	@Autowired
-	private CuentaBancaria bancariaservice;
+	private CuentaService cuentaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4RaJoApplication.class, args);
@@ -28,7 +30,11 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 	bancaria.setFechaDeApertura(LocalDateTime.now());
 	bancaria.setNumero("12345");
 	bancaria.setTipo("A");
-	//bancaria.getSaldo(double 34);
+	bancaria.setSaldo(new BigDecimal(100));
+	bancaria.setCedulaPropietario("12344566");
+	//this.cuentaService.aperturar(bancaria);
+	System.out.println();
+	this.cuentaService.realizar(1, bancaria.getSaldo());
 	
 	
 	}

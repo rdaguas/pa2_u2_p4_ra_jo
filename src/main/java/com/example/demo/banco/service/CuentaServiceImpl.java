@@ -1,6 +1,7 @@
 package com.example.demo.banco.service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,21 +18,8 @@ public class CuentaServiceImpl implements CuentaService {
 	
 	@Override
 	public void aperturar(CuentaBancaria cuenta) {
-		CuentaBancaria cuent = this.cuentaRepository.buscar(cuenta.getId());
-		LocalDateTime n = cuent.getFechaDeApertura();
-	//Integer nDia = n.getDayOfMonth();
-		//if(nDia %2 ==0) {
-		//BigDecimal calcular = cuent.getSaldo().
-		//	 this.cuentaRepository.insertar(cuenta);
-		//else {
-			 this.cuentaRepository.insertar(cuenta);
+		this.cuentaRepository.insertar(cuenta);
 			
-		
-		
-		
-		
-		
-		
 		
 	}
 
@@ -46,5 +34,25 @@ public class CuentaServiceImpl implements CuentaService {
 		// TODO Auto-generated method stub
 		return this.cuentaRepository.buscar(id);
 	}
+
+	@Override
+	public void realizar(Integer id, BigDecimal saldo) {
+		CuentaBancaria cuent = this.cuentaRepository.buscar(id);
+		Integer ndia = cuent.getFechaDeApertura().getDayOfMonth();
+		BigDecimal cuentamas;
+		if(ndia %2 != 0) {
+			cuentamas = cuent.getSaldo().multiply(new BigDecimal(1.05));
+			this.cuentaRepository.actualizar(cuent);
+		}else{
+			this.cuentaRepository.actualizar(cuent);
+			
+			
+			
+			
+			
+		}
+	}
+
+
 
 }

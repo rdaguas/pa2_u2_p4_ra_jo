@@ -1,6 +1,9 @@
 package com.example.demo.banco.repository.modelo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import org.springframework.context.annotation.Scope;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +15,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="cuenta")
+
 public class CuentaBancaria {
 	
 	@Id
@@ -30,7 +34,7 @@ public class CuentaBancaria {
 	private LocalDateTime fechaDeApertura;
 	
 	@Column(name="cuen_saldo")
-	private Double saldo;
+	private BigDecimal saldo;
 	
 	@Column(name="cuen_cedula_propietario")
 	private String cedulaPropietario;
@@ -54,12 +58,7 @@ public class CuentaBancaria {
 	public void setFechaDeApertura(LocalDateTime fechaDeApertura) {
 		this.fechaDeApertura = fechaDeApertura;
 	}
-	public Double getSaldo() {
-		return saldo;
-	}
-	public void setSaldo(Double saldo) {
-		this.saldo = saldo;
-	}
+
 	public String getCedulaPropietario() {
 		return cedulaPropietario;
 	}
@@ -71,6 +70,19 @@ public class CuentaBancaria {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	
+	public BigDecimal getSaldo() {
+		return saldo;
+	}
+	public void setSaldo(BigDecimal saldo) {
+		this.saldo = saldo;
+	}
+	@Override
+	public String toString() {
+		return "CuentaBancaria [id=" + id + ", numero=" + numero + ", tipo=" + tipo + ", fechaDeApertura="
+				+ fechaDeApertura + ", saldo=" + saldo + ", cedulaPropietario=" + cedulaPropietario + "]";
 	}
 	
 	
