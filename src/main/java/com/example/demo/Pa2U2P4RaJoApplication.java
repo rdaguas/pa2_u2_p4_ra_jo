@@ -1,10 +1,13 @@
 package com.example.demo;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.banco.repository.modelo.CuentaBancaria;
 import com.example.demo.repository.modelo.Estudiante;
 import com.example.demo.service.EstudianteService;
 
@@ -12,8 +15,8 @@ import com.example.demo.service.EstudianteService;
 public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 	
 	@Autowired
-	private EstudianteService estudianteService;
-
+	private CuentaBancaria bancariaservice;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4RaJoApplication.class, args);
 	}
@@ -21,21 +24,13 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Estudiante estu = new Estudiante();
-		estu.setNombre("Jimmy");
-		estu.setApellido("Ortega");
-		estu.setCedula("342");
-		
-		Estudiante estu2 = new Estudiante();
-		estu2.setApellido("Juan");
-		estu2.setNombre("Pedro");
-		estu2.setCedula("135");
-		
-		this.estudianteService.actualizar(estu2);
-		this.estudianteService.guardar(estu);
-		
-		this.estudianteService.eliminar("66");
-		System.out.println(this.estudianteService.buscar("1724340391"));
+	CuentaBancaria bancaria = new CuentaBancaria();
+	bancaria.setFechaDeApertura(LocalDateTime.now());
+	bancaria.setNumero("12345");
+	bancaria.setTipo("A");
+	//bancaria.getSaldo(double 34);
+	
+	
 	}
 
 }
