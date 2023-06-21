@@ -12,27 +12,28 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.repository.modelo.Alumno;
 import com.example.demo.repository.modelo.Autor;
 import com.example.demo.repository.modelo.Ciudadano;
 import com.example.demo.repository.modelo.Empleado;
 import com.example.demo.repository.modelo.Habitacion;
 import com.example.demo.repository.modelo.Hotel;
 import com.example.demo.repository.modelo.Libro;
+import com.example.demo.repository.modelo.Materia;
+import com.example.demo.repository.modelo.Matricula;
 import com.example.demo.service.AutorService;
 import com.example.demo.service.CiudadanoService;
 import com.example.demo.service.EmpleadoService;
 import com.example.demo.service.HabitacionService;
 import com.example.demo.service.HotelService;
 import com.example.demo.service.LibroService;
+import com.example.demo.service.MatriculaService;
 
 @SpringBootApplication
 public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 	
 	@Autowired
-	private LibroService libroService;
-	
-	@Autowired
-	private AutorService autorService;
+	private MatriculaService matriculaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4RaJoApplication.class, args);
@@ -41,26 +42,33 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Set<Autor>listaAut = new HashSet<>();
 		
-		Autor aut1 = new Autor();
-
-		aut1.setNombre("Juan");
-		aut1.setApellido("Shapere");
-		listaAut.add(aut1);
 		
-		//this.autorService.agregar(aut1);
+		List<Materia>mates = new ArrayList<>();
+		Materia mate = new Materia();
+		Materia mate2 = new Materia();
+		mate.setNombre("Analisis");
+		mate2.setNombre("P_Avanzada");
+		mates.add(mate);
+		mates.add(mate2);
 		
-	
+		List<Alumno>alums = new ArrayList<>();
+		Alumno alum = new Alumno();
+		Alumno alum2 = new Alumno();
+		alum.setNombre("Roberto");
+		alum2.setNombre("Jimmy");
+		alums.add(alum);
+		alums.add(alum2);
 		
-		Libro lib = new Libro();
-		lib.setAutores(listaAut);
-		lib.setEditorial("Lala");
-		lib.setTitulo("Don quijote");
+		Matricula matri = new Matricula();
+		matri.setNumero("100");
+		matri.setAlumno(alum);
+		matri.setMateria(mate2);
+		matri.setFecha(LocalDateTime.now());
 		
-		this.libroService.agregar(lib);
+		this.matriculaService.agregar(matri);
 		
-	
+		
 	
 		
 		
