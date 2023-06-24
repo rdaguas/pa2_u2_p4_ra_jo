@@ -16,6 +16,7 @@ import com.example.demo.repository.modelo.Alumno;
 import com.example.demo.repository.modelo.Autor;
 import com.example.demo.repository.modelo.Ciudadano;
 import com.example.demo.repository.modelo.Empleado;
+import com.example.demo.repository.modelo.Estudiante;
 import com.example.demo.repository.modelo.Habitacion;
 import com.example.demo.repository.modelo.Hotel;
 import com.example.demo.repository.modelo.Libro;
@@ -24,6 +25,7 @@ import com.example.demo.repository.modelo.Matricula;
 import com.example.demo.service.AutorService;
 import com.example.demo.service.CiudadanoService;
 import com.example.demo.service.EmpleadoService;
+import com.example.demo.service.EstudianteService;
 import com.example.demo.service.HabitacionService;
 import com.example.demo.service.HotelService;
 import com.example.demo.service.LibroService;
@@ -33,7 +35,7 @@ import com.example.demo.service.MatriculaService;
 public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 	
 	@Autowired
-	private MatriculaService matriculaService;
+	private EstudianteService estudianteService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4RaJoApplication.class, args);
@@ -42,31 +44,30 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
+		List<Estudiante> est = this.estudianteService.buscarListaPorApellido("Ortega");
+		//System.out.println(est);
+		
+		Estudiante estuApellidoyNombre = this.estudianteService.seleccionarPorApellidoyNombre("Ramos", "Felipe");
+		System.out.println(estuApellidoyNombre);
+		
+		//Estudiante ty = this.estudianteService.seleccionarPorApellidoTyped("Ramos");
+		//System.out.println(ty);
+		
+		Estudiante estu = new Estudiante();
+		estu.setNombre("Felipe");
+		estu.setApellido("Ramos");
+		estu.setCedula("17243");
+		
+		Estudiante estu2 = new Estudiante();
+		estu2.setNombre("Jimmy");
+		estu2.setApellido("Ortega");
+		estu2.setCedula("10");
+		
+		//this.estudianteService.guardar(estu);
+		;
+		//System.out.println(this.estudianteService.buscarPorApellido("Ortega"));
 		
 		
-		List<Materia>mates = new ArrayList<>();
-		Materia mate = new Materia();
-		Materia mate2 = new Materia();
-		mate.setNombre("Analisis");
-		mate2.setNombre("P_Avanzada");
-		mates.add(mate);
-		mates.add(mate2);
-		
-		List<Alumno>alums = new ArrayList<>();
-		Alumno alum = new Alumno();
-		Alumno alum2 = new Alumno();
-		alum.setNombre("Roberto");
-		alum2.setNombre("Jimmy");
-		alums.add(alum);
-		alums.add(alum2);
-		
-		Matricula matri = new Matricula();
-		matri.setNumero("100");
-		matri.setAlumno(alum);
-		matri.setMateria(mate2);
-		matri.setFecha(LocalDateTime.now());
-		
-		this.matriculaService.agregar(matri);
 		
 		
 	
