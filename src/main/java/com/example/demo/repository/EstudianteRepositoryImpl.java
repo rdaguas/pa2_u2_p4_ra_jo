@@ -54,13 +54,13 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 		//Cuando uso query debo usar un CAST en el return
 		Query myQuery = this.entityManager.createQuery("SELECT e FROM Estudiante e WHERE e.apellido= :datoApellido");
 		myQuery.setParameter("datoApellido", apellido);
-		return (Estudiante) myQuery.getSingleResult();
+		return  (Estudiante) myQuery.getSingleResult();
 	}
 
 	@Override
 	public List<Estudiante> seleccionarListaPorApellido(String apellido) {
 		//QUERY JPQL
-		Query myQuery = this.entityManager.createQuery("SELECT e FROM Estudiante e WHERE e.apellido= :datoApellido");
+		Query myQuery = this.entityManager.createQuery("SELECT e FROM Estudiante e WHERE e.apellido =: datoApellido");
 		myQuery.setParameter("datoApellido", apellido);
 		return myQuery.getResultList();
 	}
@@ -79,7 +79,14 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 		//Parte nueva por aprender
 		//QUERY TIPED
 		//SELECT e FROM
-		TypedQuery<Estudiante> myQuery = this.entityManager.createNamedQuery("SELECT e FROM Estudiante e WHERE e.apellido= :datoApellido", Estudiante.class);
+		TypedQuery<Estudiante> myQuery = this.entityManager.createQuery("SELECT e FROM Estudiante e WHERE e.apellido= :datoApellido", Estudiante.class);
+		myQuery.setParameter("datoApellido", apellido);
+		return myQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante seleccionarPorApellidoNamed(String apellido) {
+		TypedQuery<Estudiante> myQuery=this.entityManager.createNamedQuery("Estudiante.buscarApellido", Estudiante.class);
 		myQuery.setParameter("datoApellido", apellido);
 		return myQuery.getSingleResult();
 	}

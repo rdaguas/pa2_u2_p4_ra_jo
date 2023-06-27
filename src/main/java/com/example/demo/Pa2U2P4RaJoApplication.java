@@ -48,10 +48,10 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 		//System.out.println(est);
 		
 		Estudiante estuApellidoyNombre = this.estudianteService.seleccionarPorApellidoyNombre("Ramos", "Felipe");
-		System.out.println(estuApellidoyNombre);
+		//System.out.println(estuApellidoyNombre);
 		
-		//Estudiante ty = this.estudianteService.seleccionarPorApellidoTyped("Ramos");
-		//System.out.println(ty);
+		Estudiante ty = this.estudianteService.seleccionarPorApellidoTyped("Ramos");
+		System.out.println(ty);
 		
 		Estudiante estu = new Estudiante();
 		estu.setNombre("Felipe");

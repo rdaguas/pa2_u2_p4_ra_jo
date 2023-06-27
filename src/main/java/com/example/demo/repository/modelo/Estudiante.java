@@ -5,11 +5,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Table(name="estudiante")
 @Entity
+@NamedQuery(name ="Estudiante.buscaPorApellido", query = "Select e from Estudiante e WHERE e.apellido =: datoApellido")
 public class Estudiante {
 	
 	@GeneratedValue(generator = "seq_estudiante",strategy = GenerationType.SEQUENCE)
@@ -26,7 +28,6 @@ public class Estudiante {
 	
 	@Column(name="estu_apellido")
 	private String apellido;
-	
 	
 	
 	
