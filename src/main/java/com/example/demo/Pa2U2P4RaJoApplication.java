@@ -47,11 +47,11 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 		List<Estudiante> est = this.estudianteService.buscarListaPorApellido("Ortega");
 		//System.out.println(est);
 		
-		Estudiante estuApellidoyNombre = this.estudianteService.seleccionarPorApellidoyNombre("Ramos", "Felipe");
+		//Estudiante estuApellidoyNombre = this.estudianteService.seleccionarPorApellidoyNombre("Ramos", "Felipe");
 		//System.out.println(estuApellidoyNombre);
 		
-		Estudiante ty = this.estudianteService.seleccionarPorApellidoTyped("Ramos");
-		System.out.println(ty);
+	//	Estudiante ty = this.estudianteService.seleccionarPorApellidoTyped("Ramos");
+
 		
 		Estudiante estu = new Estudiante();
 		estu.setNombre("Felipe");
@@ -64,15 +64,31 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 		estu2.setCedula("10");
 		
 		//this.estudianteService.guardar(estu);
-		;
+		
 		//System.out.println(this.estudianteService.buscarPorApellido("Ortega"));
 		
+	//	System.out.println(this.estudianteService.seleccionarPorApellidoNamed("Aguas"));
+		
+		//System.out.println(this.estudianteService.seleccionarPorApellidoNamedQuery("Aguas"));
+		//this.estudianteService.eliminar("17243");
+		
+		//System.out.println(this.estudianteService.seleccionarPorApellidoNativeQuery("Ramos"));
 		
 		
 		
-	
+		//System.out.println(this.estudianteService.buscarListaPorApellido("Ortega"));
+		
+		//System.out.println(this.estudianteService.seleccionarPorApellidoTypedNativeQuery("Ramos"));
+		
+//		public Estudiante seleccionarPorNombreNamedQuery(String nombre);
+//		
+//		public Estudiante seleccionarPorNombreTypedNativeQuery(String nombre);
+		//System.out.println(this.estudianteService.seleccionarPorNombreNamedQuery("Felipe"));
+		
+		System.out.println(this.estudianteService.seleccionarPorNombreTypedNativeQuery("Felipe"));
 		
 		
+
 	}
 	
 	
