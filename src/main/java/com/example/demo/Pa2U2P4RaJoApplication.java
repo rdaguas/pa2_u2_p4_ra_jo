@@ -65,42 +65,28 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 		
 		//this.estudianteService.guardar(estu);
 		
-		System.out.println("************************************ QUERY ************************************");
-		System.out.println(this.estudianteService.buscarPorApellido("Ortega"));
-		
-		System.out.println("************************************ TYPED QUERY ************************************");
-		System.out.println(this.estudianteService.seleccionarPorApellidoTypedQuery("Valencia"));
-		
-		System.out.println("************************************ NAMED QUERY ************************************");
-		System.out.println(this.estudianteService.seleccionarPorApellidoNamedQuery("Aguas"));
-		System.out.println(this.estudianteService.seleccionarPorNombreNamedQuery("Daniel"));
-		
-		
-		
-	//	System.out.println(this.estudianteService.seleccionarPorApellidoNamed("Aguas"));
-		
-		
-		//this.estudianteService.eliminar("17243");
-		
-		//System.out.println(this.estudianteService.seleccionarPorApellidoNativeQuery("Ramos"));
-		
-		
-		
+//		System.out.println("************************************ QUERY ************************************");
+//		System.out.println(this.estudianteService.buscarPorApellido("Ortega"));
 		//System.out.println(this.estudianteService.buscarListaPorApellido("Ortega"));
-		
-		//System.out.println(this.estudianteService.seleccionarPorApellidoTypedNativeQuery("Ramos"));
-		
-//		public Estudiante seleccionarPorNombreNamedQuery(String nombre);
 //		
-//		public Estudiante seleccionarPorNombreTypedNativeQuery(String nombre);
-		//System.out.println(this.estudianteService.seleccionarPorNombreNamedQuery("Felipe"));
+//		System.out.println("************************************ TYPED QUERY ************************************");
+//		System.out.println(this.estudianteService.seleccionarPorApellidoTypedQuery("Valencia"));
 		
-		System.out.println(this.estudianteService.seleccionarPorNombreTypedNativeQuery("Felipe"));
+//		
+//		System.out.println("************************************ NAMED QUERY ************************************");
+//		System.out.println(this.estudianteService.seleccionarPorApellidoNamedQuery("Aguas"));
+//		System.out.println(this.estudianteService.seleccionarPorNombreNamedQuery("Daniel"));
 		
+//		System.out.println(this.estudianteService.seleccionarPorApellidoNamed("Aguas"));
 		
+		System.out.println("************************************ NATIVE QUERY ************************************");
+		System.out.println("Estudiante por nombre, NativeQuery: "+this.estudianteService.seleccionarPorNombreTypedNativeQuery("Daniel"));
+		System.out.println("Estudiante por apellido, NativeQuery: "+this.estudianteService.seleccionarPorApellidoNativeQuery("Aguas"));
+		System.out.println("************************************ TYPED NATIVE QUERY ************************************");
+		System.out.println("Estudiante por apellido, TypedNativeQuery: "+this.estudianteService.seleccionarPorApellidoTypedNativeQuery("Ortega"));
+		System.out.println("Estudiante por nombre, TypedNativeQuery: "+ this.estudianteService.seleccionarPorNombreTypedNativeQuery("Roberto"));
+		System.out.println("************************************ CRITERIA API QUERY ************************************");
+		System.out.println("Estudiante por apellido, CriteriaApiQuery: "+ this.estudianteService.seleccionarPorApellidoCriteriaAPIQuery("Ramos"));
 
 	}
-	
-	
-
 }

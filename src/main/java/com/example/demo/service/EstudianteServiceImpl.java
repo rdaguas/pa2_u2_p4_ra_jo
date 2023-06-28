@@ -93,6 +93,12 @@ public class EstudianteServiceImpl implements EstudianteService {
 		// TODO Auto-generated method stub
 		return this.estudianteRepository.seleccionarPorNombreTypedNativeQuery(nombre);
 	}
+
+	@Override
+	public Estudiante seleccionarPorApellidoCriteriaAPIQuery(String apellido) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepository.seleccionarPorApellidoCriteriaAPIQuery(apellido);
+	}
 	
 
 }
