@@ -27,4 +27,10 @@ public Estudiante seleccionarPorApellidoNamed(String apellido);
 public Estudiante seleccionarPorNombreNamedQuery(String nombre);
 	
 	public Estudiante seleccionarPorNombreTypedNativeQuery(String nombre);
+	
+	public Estudiante buscarEstudianteDinamico(String nombre, String apellido, Double peso);
+
+	
+	public int eliminarPorNombre(String nombre);
+	public int actualizarPorApellido(String nombre, String apellido);
 }

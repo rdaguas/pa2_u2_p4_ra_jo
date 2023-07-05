@@ -57,13 +57,16 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 		estu.setNombre("Felipe");
 		estu.setApellido("Ramos");
 		estu.setCedula("17243");
+		estu.setPeso(Double.valueOf(105));
 		
 		Estudiante estu2 = new Estudiante();
 		estu2.setNombre("Jimmy");
 		estu2.setApellido("Ortega");
 		estu2.setCedula("10");
+		estu2.setPeso(Double.valueOf(90));
 		
 		//this.estudianteService.guardar(estu);
+		this.estudianteService.guardar(estu2);
 		
 		//System.out.println(this.estudianteService.buscarPorApellido("Ortega"));
 		
@@ -85,10 +88,15 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 //		public Estudiante seleccionarPorNombreTypedNativeQuery(String nombre);
 		//System.out.println(this.estudianteService.seleccionarPorNombreNamedQuery("Felipe"));
 		
-		System.out.println(this.estudianteService.seleccionarPorNombreTypedNativeQuery("Felipe"));
+		//System.out.println(this.estudianteService.seleccionarPorNombreTypedNativeQuery("Felipe"));
 		
-		
+		//dinamico
+		//System.out.println(this.estudianteService.buscarEstudianteDinamico("Jimmy", "Ortega", Double.valueOf(150)));
 
+		
+		
+		System.out.println(this.estudianteService.eliminarPorNombre("Jimmy"));
+		System.out.println(this.estudianteService.actualizarPorApellido("Roberto", "Ramos"));
 	}
 	
 	
