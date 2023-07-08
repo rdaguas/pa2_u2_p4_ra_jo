@@ -37,6 +37,15 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 	@Autowired
 	private EstudianteService estudianteService;
 	
+	@Autowired
+	private MatriculaService matriculaService;
+	
+	@Autowired
+	private HotelService hotelService;
+	
+	@Autowired
+	private HabitacionService habitacionService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4RaJoApplication.class, args);
 	}
@@ -65,8 +74,19 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 		estu2.setCedula("10");
 		estu2.setPeso(Double.valueOf(90));
 		
+		//Buscar reporte de estudiantes que existen
+		//this.estudianteService.buscaarTodosDTO().forEach(System.out::println);
+		
+		//Buscar Lista de Matricula de alumnos y materia
+		//this.matriculaService.buscarTodosDTO().forEach(System.out::println);
+		
+		//Buscar hotel por id
+		 System.out.println(this.hotelService.buscar(1).getNombre());
+		 System.out.println(this.habitacionService.buscar(2).getNumero());
+	
+		
 		//this.estudianteService.guardar(estu);
-		this.estudianteService.guardar(estu2);
+		//this.estudianteService.guardar(estu2);
 		
 		//System.out.println(this.estudianteService.buscarPorApellido("Ortega"));
 		
@@ -91,12 +111,12 @@ public class Pa2U2P4RaJoApplication implements CommandLineRunner {
 		//System.out.println(this.estudianteService.seleccionarPorNombreTypedNativeQuery("Felipe"));
 		
 		//dinamico
-		//System.out.println(this.estudianteService.buscarEstudianteDinamico("Jimmy", "Ortega", Double.valueOf(150)));
-
+		//System.out.println(this.estudianteService.buscarEstudianteDinamico("Jimmy", "Ortega", Double.valueOf(200)));
+	
 		
 		
-		System.out.println(this.estudianteService.eliminarPorNombre("Jimmy"));
-		System.out.println(this.estudianteService.actualizarPorApellido("Roberto", "Ramos"));
+		//System.out.println(this.estudianteService.eliminarPorNombre("Jimmy"));
+		//System.out.println(this.estudianteService.actualizarPorApellido("Roberto", "Ramos"));
 	}
 	
 	

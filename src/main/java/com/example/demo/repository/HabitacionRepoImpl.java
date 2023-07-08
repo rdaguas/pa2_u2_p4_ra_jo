@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repository.modelo.Habitacion;
@@ -30,7 +32,7 @@ public class HabitacionRepoImpl implements HabitacionRepo {
 	@Override
 	public Habitacion buscar(Integer id) {
 		// TODO Auto-generated method stub
-		return this.entityManager.find(Habitacion.class, id);
+		return this.entityManager.find(Habitacion.class, id.SIZE);
 	}
 
 	@Override
@@ -39,6 +41,12 @@ public class HabitacionRepoImpl implements HabitacionRepo {
 		Habitacion habi = this.buscar(id);
 		this.entityManager.remove(habi);
 		
+	}
+
+	@Override
+	public List<Habitacion> seleccionarTodo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

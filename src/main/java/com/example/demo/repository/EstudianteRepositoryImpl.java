@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.repository.modelo.dto.EstudianteDTO;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -206,7 +207,6 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 		// DELETE FROM estudiante WHERE estu_nombre = ?
 		// DELETE FROM Estudiante e WHERE e.nombre = :datoNombre
 
-		//
 		Query myQuery = this.entityManager.createQuery("DELETE FROM Estudiante e WHERE e.nombre = :datoNombre");
 		myQuery.setParameter("datoNombre", nombre);
 
@@ -222,12 +222,18 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 		//JPQL
 		///UPDATE Estudiante e SET e.nombre =:datoNombre WHERE e.apellido =:datoApellido
 
-		//
 		Query myQuery = this.entityManager.createQuery("UPDATE Estudiante e SET e.nombre =:datoNombre WHERE e.apellido =:datoApellido");
 		myQuery.setParameter("datoNombre", nombre);
 		myQuery.setParameter("datoApellido", apellido);
 		return myQuery.executeUpdate();
 
+	}
+
+	@Override
+	public List<EstudianteDTO> seleccionarTodosDTO() {
+		//el jpql no es entidad EstudianteDTO, por lo  tanto se debe pober "SELECT NEW EstudianteDTO{e.nombre, e.apellido} FROM Estudiante e"
+		TypedQuery<EstudianteDTO> myQuery = this.entityManager.createQuery("SELECT NEW com.example.demo.repository.modelo.dto.EstudianteDTO(e.nombre, e.apellido) FROM Estudiante e", EstudianteDTO.class);
+		return myQuery.getResultList();
 	}
 
 }
